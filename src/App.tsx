@@ -45,12 +45,12 @@ import AdminInterviewResourcesPage from "@/pages/Admin/InterviewResourcesPage";
 
 const queryClient = new QueryClient();
 
-// Use the Clerk publishable key from database
-const clerkPubKey = "pk_test_ZmFzdC1wZWxpY2FuLTQ4LmNsZXJrLmFjY291bnRzLmRldiQ";
+// Use the Clerk publishable key from environment variables
+const clerkPubKey = import.meta.env.VITE_CLERK_PUBLISHABLE_KEY;
 
 const App = () => (
   <QueryClientProvider client={queryClient}>
-    <ClerkProvider publishableKey={clerkPubKey}>
+    <ClerkProvider publishableKey={clerkPubKey!}>
       <ClerkAuthProvider>
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
           <TooltipProvider>
